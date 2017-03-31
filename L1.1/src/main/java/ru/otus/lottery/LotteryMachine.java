@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * Created by tully.
  */
-class  LotteryMachine {
+class LotteryMachine {
     private final List<String> emails;
     private final int winnersCount;
     private long seed = 0;
