@@ -1,4 +1,4 @@
-package ru.otus.l31;
+package ru.otus.l31.generics;
 
 import java.lang.reflect.ParameterizedType;
 

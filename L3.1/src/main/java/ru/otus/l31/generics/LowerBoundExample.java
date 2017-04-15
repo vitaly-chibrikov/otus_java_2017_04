@@ -1,4 +1,4 @@
-package ru.otus.l31;
+package ru.otus.l31.generics;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,17 +6,18 @@ import java.util.List;
 /**
  * Created by tully.
  */
-public class UpperBoundExample<T extends Number> {
-
+public class LowerBoundExample {
     public static void main(String[] args) {
-        List<? extends Number> list;
+        List<? super Number> list;
 
         list = new ArrayList<Number>();
-        list = new ArrayList<Integer>();
-        list = new ArrayList<Double>();
+
+        //list = new ArrayList<Integer>();
+        //list = new ArrayList<Double>();
 
         //list = new ArrayList<Character>();
         //list = new ArrayList<String>();
-        //list = new ArrayList<Object>();
+
+        list = new ArrayList<Object>();
     }
 }

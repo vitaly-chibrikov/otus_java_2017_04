@@ -1,7 +1,4 @@
-package ru.otus.l31;
-
-import java.util.ArrayList;
-import java.util.List;
+package ru.otus.l31.generics;
 
 /**
  * Created by tully.
