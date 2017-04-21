@@ -1,55 +1,34 @@
 package ru.otus.l32;
 
+import com.google.common.collect.Collections2;
+import org.apache.commons.collections4.CollectionUtils;
+
 import java.util.*;
 
 /**
  * Created by tully.
- * <p>
- * Common cases:
- * {@link #listToArray(List) List to Array},
- * {@link #setToArray(Set) Set to Array},
- * {@link #setToArrayList(Set) Set to ArrayList},
- * {@link #listToHashSet(List) List to HashSet},
- * {@link #singletonList(Object) List with one element},
- * {@link #singletonSet(Object) Set with one element},
- * {@link #listFromArray(Object[]) List from array},
- * {@link #immutable(Collection) Immutable collection}
  */
 public class Main {
+    private static final int MEASURE_COUNT = 100;
+
+    @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
     public static void main(String... args) {
+        Collection<Integer> example = new HashSet<>();
+        int min = 0;
+        int max = 9_999_999;
+        for (int i = min; i < max + 1; i++) {
+            example.add(i);
+        }
 
+        calcTime(() -> example.contains(min));
     }
 
-    private static Object[] listToArray(List<Object> list) {
-        return list.toArray(new Object[list.size()]);
-    }
-
-    private static Object[] setToArray(Set<Object> set) {
-        return set.toArray(new Object[set.size()]);
-    }
-
-    private static List<Object> setToArrayList(Set<Object> set) {
-        return new ArrayList<>(set);
-    }
-
-    private static Set<Object> listToHashSet(List<Object> list) {
-        return new HashSet<>(list);
-    }
-
-    private static List<Object> singletonList(Object object) {
-        return Collections.singletonList(object);
-    }
-
-    private static Set<Object> singletonSet(Object object) {
-        return Collections.singleton(object);
-    }
-
-    private static List<Object> listFromArray(Object[] array) {
-        //return new ArrayList<Object>(array);
-        return Arrays.asList(array);
-    }
-
-    private static Collection<Object> immutable(Collection<Object> collection) {
-        return Collections.unmodifiableCollection(collection);
+    private static void calcTime(Runnable runnable) {
+        long startTime = System.nanoTime();
+        for (int i = 0; i < MEASURE_COUNT; i++)
+            runnable.run();
+        long finishTime = System.nanoTime();
+        long timeNs = (finishTime - startTime) / MEASURE_COUNT;
+        System.out.println("Time spent: " + timeNs + "ns (" + timeNs / 1_000_000 + "ms)");
     }
 }
