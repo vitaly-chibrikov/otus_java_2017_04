@@ -19,15 +19,15 @@ public class Cell implements Comparable<Cell>, Iterable<Cell> {
     public boolean withdraw(int requested) {
         int expectedCount = Math.min(requested / nominal, count);
         int expectedCash = expectedCount * nominal;
+        boolean nextCellResult = true;
         if (requested != expectedCash) {
-            if (next == null) {
-                return false;
-            } else {
-                next.withdraw(requested - expectedCash);
-            }
+            nextCellResult = next != null && next.withdraw(requested - expectedCash);
         }
-        count = count - expectedCount;
-        return true;
+        if(nextCellResult) {
+            count = count - expectedCount;
+            return true;
+        }
+        return false;
     }
 
     public int getNominal() {

@@ -31,7 +31,21 @@ public class ATMTest {
         ATM atm = new ATM(cells);
         int balance = atm.getBalance();
 
-        atm.withdraw(27);
+        Assert.assertTrue(atm.withdraw(27));
         Assert.assertEquals(balance - 27, atm.getBalance());
+    }
+
+    @Test
+    public void withdrawFail() {
+        List<Cell> cells = new ArrayList<>();
+
+        cells.add(new Cell(5, 10));
+        cells.add(new Cell(10, 10));
+
+        ATM atm = new ATM(cells);
+        int balance = atm.getBalance();
+
+        Assert.assertFalse(atm.withdraw(27));
+        Assert.assertEquals(balance, atm.getBalance());
     }
 }
