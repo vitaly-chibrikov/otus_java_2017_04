@@ -1,0 +1,5 @@
+<?xml version = "1.0" encoding = "UTF-8" standalone = "yes"?>
+<class type='ru.otus.l821.main.Person'>
+	<name>Malcolm</name>
+	<age>42</age>
+</class>
