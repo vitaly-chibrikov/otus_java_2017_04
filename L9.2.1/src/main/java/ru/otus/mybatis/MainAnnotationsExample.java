@@ -26,7 +26,7 @@ public class MainAnnotationsExample {
     private void run() {
         SqlSessionFactory sqlSessionFactory = getSqlSessionFactory(getMySQLDataSource());
         //SqlSessionFactory sqlSessionFactory = getSqlSessionFactory(getH2DataSource());
-        try (SqlSession session = sqlSessionFactory.openSession()) {
+        try (SqlSession session = sqlSessionFactory.openSession(false)) {
 
             UsersDAO dao = session.getMapper(UsersDAO.class);
             createTableIfNotExists(dao);

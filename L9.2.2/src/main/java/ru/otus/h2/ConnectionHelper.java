@@ -1,5 +1,7 @@
 package ru.otus.h2;
 
+import org.h2.tools.Server;
+
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
@@ -21,6 +23,7 @@ class ConnectionHelper {
 
     static void example() {
         try (Connection connection = getConnection()) {
+
             System.out.println("Connected to: " + connection.getMetaData().getURL());
             System.out.println("DB name: " + connection.getMetaData().getDatabaseProductName());
             System.out.println("DB version: " + connection.getMetaData().getDatabaseProductVersion());

@@ -15,7 +15,7 @@ public class MainXMLExample {
         Reader reader = Resources.getResourceAsReader("config.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
 
-        try (SqlSession session = sqlSessionFactory.openSession()) {
+        try (SqlSession session = sqlSessionFactory.openSession(false)) {
             session.insert("ru.otus.mybatis.insert", new UsersDataSet(1,"sully"));
             session.commit();
 
