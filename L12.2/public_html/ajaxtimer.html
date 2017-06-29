@@ -1,0 +1,16 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Timer</title>
+  <script src="js/ajaxtimer.js"></script>
+</head>
+<body onload='setInterval(function(){refresh()}, 1000 ); refresh();'>
+<div class="top">
+  <img src="img/logo.png"/>
+  <br/>
+  <a href="timer">Reload page timer</a> <a href="ajaxtimer.html">AJAX timer</a>
+  <a href="messenger.html">Long polling messenger</a> <a href="chat.html">Websocket chat</a><br/>
+</div>
+<p>Client time: <span id='ClientTime'></span></p>
+<p>Server time: <span id='ServerTime'></span></p>
+</body>
+</html>
