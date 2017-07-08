@@ -8,8 +8,13 @@ import java.util.Date;
  * Created by tully.
  */
 public class TimeService {
+    private static final String DEFAULT_PATTERN = "HH.mm.ss";
 
     private final String pattern;
+
+    public TimeService() {
+        this.pattern = DEFAULT_PATTERN;
+    }
 
     public TimeService(String pattern) {
         this.pattern = pattern;

@@ -4,7 +4,7 @@
 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
     <bean id="timeService" class="ru.otus.servlet.TimeService">
-        <property name="pattern" value="HH:mm:ss" />
+        <constructor-arg name="pattern" value="HH-mm-ss" />
     </bean>
 
 </beans>
