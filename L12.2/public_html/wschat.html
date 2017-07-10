@@ -1,0 +1,27 @@
+﻿<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Jetty WebSocket: Chat</title>
+    <script src="js/wschat.js" type="text/javascript"></script>
+</head>
+<body onload="init();">
+<div id="body">
+    <div id="menu">
+        <p class="welcome">
+            Welcome,<input id="username" value="anonymous"/>
+        </p>
+
+        <div style="clear: both"></div>
+    </div>
+
+    <div id="chatbox">
+        <textarea id="messages" rows="16" cols="48" readonly="readonly"></textarea>
+    </div>
+
+    <form name="message" action="">
+        <input name="usermsg" type="text" id="message" size="63"/>
+        <input type="button" name="submitmsg" value="Send..." onclick="sendMessage();"/>
+    </form>
+</div>
+</body>
+</html>
