@@ -65,6 +65,7 @@
                     <webResources>
                         <resource>
                             <directory>public_html</directory>
+                            <!--targetPath>WEB-INF</targetPath-->
                         </resource>
                     </webResources>
                 </configuration>
