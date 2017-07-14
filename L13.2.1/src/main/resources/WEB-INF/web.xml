@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<web-app>
+
+    <display-name>L13.2.1</display-name>
+    <description>Example of war file</description>
+
+    <!-- HW13 path to Spring cfg -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:SpringBeans.xml</param-value>
+    </context-param>
+
+    <!-- HW13 Spring context load listener -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <servlet>
+        <servlet-name>timerServlet</servlet-name>
+        <servlet-class>ru.otus.servlet.TimerServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>timerServlet</servlet-name>
+        <url-pattern>/timer</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+</web-app>
