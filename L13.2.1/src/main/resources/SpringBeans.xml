@@ -7,4 +7,8 @@
         <constructor-arg name="pattern" value="HH/mm/ss" />
     </bean>
 
+    <bean id="myEhCacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+        <property name="configLocation" value="classpath:ehcache.xml"/>
+    </bean>
+
 </beans>
