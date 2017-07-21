@@ -1,4 +1,4 @@
-package ru.otus.l131.interference;
+package ru.otus.l142;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -19,8 +19,8 @@ class CounterSemaphore {
         return instance;
     }
 
-    boolean isIncrementAndCheck() {
-        return count.incrementAndGet() < HUNDRED_MILLION;
+    boolean stop() {
+        return count.incrementAndGet() > HUNDRED_MILLION;
     }
 
 }

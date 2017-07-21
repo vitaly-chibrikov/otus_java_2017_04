@@ -1,13 +1,14 @@
-package ru.otus.l131.interference;
+package ru.otus.l142;
 
 /**
  * @author v.chibrikov
  */
-public class Interference {
+class InterferenceExample {
 
-    public void example() throws InterruptedException {
-        InterferenceThread thread1 = new InterferenceThread();
-        InterferenceThread thread2 = new InterferenceThread();
+    void start() throws InterruptedException {
+
+        CountedThread thread1 = new CountedThread();
+        CountedThread thread2 = new CountedThread();
         thread1.start();
         thread2.start();
 
