@@ -28,7 +28,7 @@ public class ServerMain {
 
     private void start() throws Exception {
         ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
-        //startClient(executorService);
+        startClient(executorService);
 
         MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
         ObjectName name = new ObjectName("ru.otus:type=Server");

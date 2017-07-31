@@ -78,7 +78,7 @@ public class SocketClientChannel implements MsgChannel {
                 Msg msg = output.take();
                 String json = new Gson().toJson(msg);
                 out.println(json);
-                out.println("\n");
+                out.println(); //end of message
             }
         } catch (InterruptedException | IOException e) {
             logger.log(Level.SEVERE, e.getMessage());
