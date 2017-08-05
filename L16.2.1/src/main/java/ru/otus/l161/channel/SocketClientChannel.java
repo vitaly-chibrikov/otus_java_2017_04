@@ -12,12 +12,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -37,7 +33,7 @@ public class SocketClientChannel implements MsgChannel {
 
     public SocketClientChannel(Socket socket) {
         this.socket = socket;
-        this.shutdownRegistrations = new ArrayList<>();
+        this.shutdownRegistrations = new CopyOnWriteArrayList<>();
         this.executor = Executors.newFixedThreadPool(WORKERS_COUNT);
     }
 

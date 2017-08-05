@@ -3,7 +3,7 @@ package ru.otus.l161;
 import ru.otus.l161.runner.ProcessRunnerImpl;
 import ru.otus.l161.server.BlockingServer;
 import ru.otus.l161.server.LogServer;
-import ru.otus.l161.server.MirrorServer;
+import ru.otus.l161.server.NonBlockMirrorServer;
 
 import javax.management.MBeanServer;
 import javax.management.ObjectName;
@@ -23,7 +23,7 @@ public class ServerMain {
 
     private static final String CLIENT_START_COMMAND = "java -jar ../L16.2.2/target/client.jar";
     private static final int CLIENT_START_DELAY_SEC = 1;
-    private static final int CLIENTS_COUNT = 5;
+    private static final int CLIENTS_COUNT = 15;
 
     public static void main(String[] args) throws Exception {
         new ServerMain().start();
@@ -34,8 +34,8 @@ public class ServerMain {
         startClients(CLIENTS_COUNT, executorService);
 
         //startLogServer();
-        //startMirrorServer();
-        startBlockingServer();
+        startMirrorServer();
+        //startBlockingServer();
 
         executorService.shutdown();
     }
@@ -51,7 +51,7 @@ public class ServerMain {
     private void startMirrorServer() throws Exception {
         MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
         ObjectName name = new ObjectName("ru.otus:type=Server");
-        MirrorServer server = new MirrorServer();
+        NonBlockMirrorServer server = new NonBlockMirrorServer();
         mbs.registerMBean(server, name);
 
         server.start();

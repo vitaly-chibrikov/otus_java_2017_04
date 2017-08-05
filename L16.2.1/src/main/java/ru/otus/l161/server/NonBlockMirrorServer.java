@@ -20,8 +20,8 @@ import java.util.logging.Logger;
 /**
  * Created by tully.
  */
-public class MirrorServer implements MirrorServerMBean {
-    private static final Logger logger = Logger.getLogger(MirrorServer.class.getName());
+public class NonBlockMirrorServer implements NonBlockMirrorServerMBean {
+    private static final Logger logger = Logger.getLogger(NonBlockMirrorServer.class.getName());
 
     private static final int THREADS_NUMBER = 1;
     private static final int PORT = 5050;
@@ -32,7 +32,7 @@ public class MirrorServer implements MirrorServerMBean {
     private final ExecutorService executor;
     private final Map<String, ChannelMessages> channelMessages;
 
-    public MirrorServer() {
+    public NonBlockMirrorServer() {
         executor = Executors.newFixedThreadPool(THREADS_NUMBER);
         channelMessages = new ConcurrentHashMap<>();
     }

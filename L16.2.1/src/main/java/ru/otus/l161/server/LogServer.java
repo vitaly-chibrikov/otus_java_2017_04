@@ -15,10 +15,9 @@ import java.util.logging.Logger;
  * Created by tully.
  */
 public class LogServer {
-    private static final Logger logger = Logger.getLogger(MirrorServer.class.getName());
+    private static final Logger logger = Logger.getLogger(NonBlockMirrorServer.class.getName());
 
     private static final int PORT = 5050;
-    private static final int STEP_TIME = 10;
     private static final int CAPACITY = 256;
 
     @SuppressWarnings("InfiniteLoopStatement")
@@ -54,7 +53,8 @@ public class LogServer {
                             int read = channel.read(buffer);
                             if (read != -1) {
                                 String result = new String(buffer.array()).trim();
-                                System.out.println("Message received: " + result + " from: " + channel.getRemoteAddress());
+                                if (!result.isEmpty())
+                                    System.out.println("Message received: " + result + " from: " + channel.getRemoteAddress());
                             } else {
                                 key.cancel();
                                 System.out.println("Connection closed, key canceled");

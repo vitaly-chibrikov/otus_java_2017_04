@@ -10,13 +10,14 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  * Created by tully.
  */
 public class BlockingServer {
-    private static final Logger logger = Logger.getLogger(MirrorServer.class.getName());
+    private static final Logger logger = Logger.getLogger(NonBlockMirrorServer.class.getName());
 
     private static final int THREADS_NUMBER = 1;
     private static final int PORT = 5050;
@@ -46,16 +47,20 @@ public class BlockingServer {
     }
 
     @SuppressWarnings("InfiniteLoopStatement")
-    private Object mirror() throws InterruptedException {
+    private void mirror() {
         while (true) {
             for (MsgChannel channel : channels) {
-                Msg msg = channel.pool();
+                Msg msg = channel.pool(); //get
                 if (msg != null) {
                     System.out.println("Mirroring the message: " + msg.toString());
                     channel.send(msg);
                 }
             }
-            Thread.sleep(MIRROR_DELAY);
+            try {
+                Thread.sleep(MIRROR_DELAY);
+            } catch (InterruptedException e) {
+                logger.log(Level.SEVERE, e.toString());
+            }
         }
     }
 }
