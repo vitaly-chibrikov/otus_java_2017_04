@@ -48,4 +48,17 @@ public class ATMTest {
         Assert.assertFalse(atm.withdraw(27));
         Assert.assertEquals(balance, atm.getBalance());
     }
+    
+    @Test
+    public void withdrawEdgeCase() {
+        List<Cell> cells = new ArrayList<>();
+
+        cells.add(new Cell(20, 3));
+        cells.add(new Cell(50, 1));
+
+        ATM atm = new ATM(cells);
+
+        Assert.assertTrue(atm.withdraw(60));
+        Assert.assertEquals(50, atm.getBalance());
+    }
 }
